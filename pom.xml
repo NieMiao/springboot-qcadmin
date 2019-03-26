@@ -11,6 +11,7 @@
     <modules>
         <module>qcadmin_common</module>
         <module>qcadmin_manager</module>
+        <module>qcadmin_auth</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
