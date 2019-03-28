@@ -26,6 +26,7 @@
         <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
         <springframework.version>5.0.5.RELEASE</springframework.version>
         <mysql-connector-java.version>5.1.45</mysql-connector-java.version>
+        <springfox-swagger.version>2.7.0</springfox-swagger.version>
         <commons-lang3.version>3.6</commons-lang3.version>
         <fastjson.version>1.2.30</fastjson.version>
         <lombok.version>1.16.16</lombok.version>
@@ -48,6 +49,16 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

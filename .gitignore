@@ -1,0 +1,19 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.gitignore
+.idea/.name
+.idea/compiler.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/workspace.xml
+qcadmin_auth/qcadmin_auth.iml
+qcadmin_common/qcadmin_common.iml
+qcadmin_manager/qcadmin_manager.iml
+qcadmin_server.iml

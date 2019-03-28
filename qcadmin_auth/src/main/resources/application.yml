@@ -12,16 +12,16 @@ spring:
     database: MySQL
     show-sql: true
     generate-ddl: true
-#  redis:
-#    host: ${REDIS_HOST:127.0.0.1}
-#    port: ${REDIS_PORT:6379}
-#    timeout: 5000 #连接超时 毫秒
-#    jedis:
-#      pool:
-#        maxActive: 3
-#        maxIdle: 3
-#        minIdle: 1
-#        maxWait: -1 #连接池最大等行时间 -1没有限制
+  redis:
+    host: ${REDIS_HOST:192.168.25.135}
+    port: ${REDIS_PORT:6379}
+    timeout: 5000ms #连接超时 毫秒
+    jedis:
+      pool:
+        maxActive: 3
+        maxIdle: 3
+        minIdle: 1
+        maxWait: -1ms #连接池最大等行时间 -1没有限制
 
 
 #    druid:
