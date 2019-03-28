@@ -4,13 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.hef.qcadmin</groupId>
+    <groupId>cn.hef.com.qcadmin</groupId>
     <artifactId>qcadmin_server</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>qcadmin_common</module>
         <module>qcadmin_manager</module>
+        <module>qcadmin_auth</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -19,11 +20,16 @@
         <relativePath/>
     </parent>
     <properties>
-        <project.build.sourceEncoding>UTF‐
-            8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF‐
-            8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
+        <springframework.version>5.0.5.RELEASE</springframework.version>
+        <mysql-connector-java.version>5.1.45</mysql-connector-java.version>
+        <springfox-swagger.version>2.7.0</springfox-swagger.version>
+        <commons-lang3.version>3.6</commons-lang3.version>
+        <fastjson.version>1.2.30</fastjson.version>
+        <lombok.version>1.16.16</lombok.version>
     </properties>
     <dependencies>
         <dependency>
@@ -40,4 +46,35 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
