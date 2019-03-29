@@ -1,4 +1,4 @@
-package qcadmin.common.utils;
+package qcadmin.auth.model;
 
 import lombok.Data;
 import org.springframework.data.domain.PageRequest;

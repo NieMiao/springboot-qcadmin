@@ -1,6 +1,5 @@
 package qcadmin.auth.entity;
 
-import qcadmin.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.ToString;
 
@@ -42,7 +41,7 @@ public class Menu extends BaseEntity {
     private Integer sort;//菜单排序
 
     @Column(name="status")
-    private String status;//菜单状态（可用，不可用）
+    private int status;//菜单状态（可用，不可用）
 
     @Column(name="icon")
     private String icon;//菜单按钮图标

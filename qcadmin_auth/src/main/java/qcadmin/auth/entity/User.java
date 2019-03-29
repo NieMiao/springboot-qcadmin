@@ -2,11 +2,11 @@ package qcadmin.auth.entity;
 
 import lombok.Data;
 import lombok.ToString;
-import qcadmin.common.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * @program: springboot-com.qcadmin
@@ -20,8 +20,8 @@ import javax.persistence.Table;
 @Table(name = "auth_user")
 public class User extends BaseEntity {
 
-    @Column(name = "user_name")
-    private String userName;	//用户名
+    @Column(name = "username")
+    private String username;	//用户名
 
     @Column(name = "password")
     private String password; 	//密码
@@ -30,11 +30,11 @@ public class User extends BaseEntity {
     private String clientId;		//客户端id
 
     @Column(name = "last_login")
-    private String lastLogin;	//最后登录时间
+    private Date lastLogin;	//最后登录时间
 
     @Column(name = "ip")
     private String ip;			//用户登录ip地址
 
     @Column(name = "status")
-    private String status;		//状态
+    private int status;		//状态
 }

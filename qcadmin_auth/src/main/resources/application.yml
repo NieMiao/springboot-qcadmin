@@ -39,10 +39,10 @@ spring:
 #      minEvictableIdleTimeMillis: 300000  #连接在连接池的最小生存时间（毫秒）
 
 
-#auth:
-#  tokenValiditySeconds: 1200  #token存储到redis的过期时间
-#  clientId: XcWebApp
-#  clientSecret: XcWebApp
+auth:
+  tokenValiditySeconds: 1200  #token存储到redis的过期时间
+  clientId: qcadminWebApp
+  clientSecret: qcadminWebApp
 #  cookieDomain: java.itcast.cn
 #  cookieMaxAge: -1
 

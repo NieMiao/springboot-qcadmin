@@ -1,4 +1,4 @@
-package qcadmin.common.entity;
+package qcadmin.auth.entity;
 
 import lombok.Data;
 
@@ -22,7 +22,7 @@ public class BaseEntity {
     private String id;
 
     @Column(name = "DELETE_FLAG")
-    private String deleteFlag;
+    private int deleteFlag;
 
     @Column(name = "CREATE_TIME")
     private Date createTime;

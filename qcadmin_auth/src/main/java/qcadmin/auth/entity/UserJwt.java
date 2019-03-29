@@ -1,4 +1,4 @@
-package qcadmin.auth.service;
+package qcadmin.auth.entity;
 
 import lombok.Data;
 import lombok.ToString;
