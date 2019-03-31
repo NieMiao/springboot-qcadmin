@@ -4,7 +4,7 @@ spring:
   application:
     name: qcadmin_manager
   datasource:
-    url: jdbc:mysql://localhost/qcadmin_manager?characterEncoding=utf-8
+    url: jdbc:mysql://192.168.25.135/qcadmin_manager?characterEncoding=utf-8
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
@@ -12,3 +12,10 @@ spring:
      database: MySQL
      show-sql: true
      generate-ddl: true
+eureka:
+  client:
+    service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:10001/eureka
+  instance:
+    prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
+    ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找

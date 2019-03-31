@@ -1,4 +1,4 @@
-package qcadmin.auth.repository;
+package qcadmin.common.utils;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -18,7 +18,7 @@ import java.util.List;
 public interface CommonRepository<T> extends JpaRepository<T,String>, JpaSpecificationExecutor<T> {
 
     //根据id查询（过滤deleteid）
-    T findByIdAndDeleteId(String id,int deleteFlag);
+    T findByIdAndDeleteFlag(String id,int deleteFlag);
 
     //根据id删除
     @Modifying

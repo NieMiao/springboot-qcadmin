@@ -1,6 +1,5 @@
 package qcadmin.common.enums;
 
-import lombok.Data;
 
 /**
  * @program: springboot-qcadmin

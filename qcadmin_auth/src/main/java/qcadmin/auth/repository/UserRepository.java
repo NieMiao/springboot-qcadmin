@@ -1,6 +1,7 @@
 package qcadmin.auth.repository;
 
 import qcadmin.auth.entity.User;
+import qcadmin.common.utils.CommonRepository;
 
 /**
  * @program: qcadmin_server

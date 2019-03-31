@@ -20,7 +20,7 @@ import qcadmin.auth.model.UserExt;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service(value = "UserDetailsServiceImpl")
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 

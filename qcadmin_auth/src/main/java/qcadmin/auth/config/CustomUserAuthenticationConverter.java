@@ -2,7 +2,6 @@ package qcadmin.auth.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,15 +10,12 @@ import org.springframework.security.oauth2.provider.token.DefaultUserAuthenticat
 import org.springframework.stereotype.Component;
 import qcadmin.auth.entity.UserJwt;
 
-import javax.annotation.Resource;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Component
 public class CustomUserAuthenticationConverter extends DefaultUserAuthenticationConverter {
 
-
-    @Qualifier("UserDetailsServiceImpl")
     @Autowired
     UserDetailsService userDetailsService;
 
@@ -38,11 +34,7 @@ public class CustomUserAuthenticationConverter extends DefaultUserAuthentication
             UserDetails userDetails = userDetailsService.loadUserByUsername(name);
             userJwt = (UserJwt) userDetails;
         }
-        //response.put("name", userJwt.getName());
         response.put("id", userJwt.getId());
-       // response.put("utype",userJwt.getUtype());
-        //response.put("userpic",userJwt.getUserpic());
-        //response.put("companyId",userJwt.getCompanyId());
         if (authentication.getAuthorities() != null && !authentication.getAuthorities().isEmpty()) {
             response.put("authorities", AuthorityUtils.authorityListToSet(authentication.getAuthorities()));
         }
