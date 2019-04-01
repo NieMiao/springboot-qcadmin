@@ -31,13 +31,4 @@ qcadmin_manager/target/classes/VO/
 qcadmin_manager/target/classes/qcadmin/manager/api/
 qcadmin_manager/target/classes/qcadmin/manager/entity/
 qcadmin_manager/target/classes/qcadmin/manager/repository/
-qcadmin_manager/target/generated-sources/
-qcadmin_auth/src/main/java/qcadmin/auth/config/AuthorizationServerConfig.java
-qcadmin_auth/target/generated-sources/
-qcadmin_auth/target/generated-test-sources/
-qcadmin_common/target/classes/qcadmin/common/utils/BaseEntity.class
-qcadmin_common/target/classes/qcadmin/common/utils/CommonRepository.class
-qcadmin_eureka/pom.xml
-qcadmin_eureka/src/main/resources/
-qcadmin_eureka/src/test/
-qcadmin_eureka/target/
+
