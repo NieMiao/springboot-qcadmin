@@ -1,4 +1,4 @@
-package qcadmin.common.utils;
+package qcadmin.common.entity;
 
 import lombok.Data;
 

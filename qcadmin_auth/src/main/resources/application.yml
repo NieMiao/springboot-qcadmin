@@ -39,7 +39,12 @@ eureka:
   instance:
     prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
     ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找
-
+encrypt:
+  key-store:
+    location: classpath:/qcadmin.keystore
+    secret: qcadmin
+    alias: qckey
+    password: qcadmin
 
 
 #auth:

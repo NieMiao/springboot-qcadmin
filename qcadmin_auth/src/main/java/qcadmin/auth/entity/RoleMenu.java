@@ -2,7 +2,7 @@ package qcadmin.auth.entity;
 
 import lombok.Data;
 import lombok.ToString;
-import qcadmin.common.utils.BaseEntity;
+import qcadmin.common.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
