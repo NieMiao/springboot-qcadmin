@@ -1,91 +1,106 @@
+CREATE SCHEMA IF NOT EXISTS `qcadmin_auth` DEFAULT CHARACTER SET utf8 ;
+USE `qcadmin_auth` ;
+
+-- -----------------------------------------------------
+-- Table `qcadmin_auth`.`clientdetails`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `qcadmin_auth`.`clientdetails` (
+  `appId` VARCHAR(128) NOT NULL,
+  `resourceIds` VARCHAR(256) NULL DEFAULT NULL,
+  `appSecret` VARCHAR(256) NULL DEFAULT NULL,
+  `scope` VARCHAR(256) NULL DEFAULT NULL,
+  `grantTypes` VARCHAR(256) NULL DEFAULT NULL,
+  `redirectUrl` VARCHAR(256) NULL DEFAULT NULL,
+  `authorities` VARCHAR(256) NULL DEFAULT NULL,
+  `access_token_validity` INT(11) NULL DEFAULT NULL,
+  `refresh_token_validity` INT(11) NULL DEFAULT NULL,
+  `additionalInformation` VARCHAR(4096) NULL DEFAULT NULL,
+  `autoApproveScopes` VARCHAR(256) NULL DEFAULT NULL,
+  PRIMARY KEY (`appId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
 
-/*Table structure for table `oauth_access_token` */
-
-DROP TABLE IF EXISTS `oauth_access_token`;
-
-CREATE TABLE `oauth_access_token` (
-  `token_id` varchar(256) DEFAULT NULL,
-  `token` blob,
-  `authentication_id` varchar(48) NOT NULL,
-  `user_name` varchar(256) DEFAULT NULL,
-  `client_id` varchar(256) DEFAULT NULL,
-  `authentication` blob,
-  `refresh_token` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`authentication_id`)
-);
-
-/*Data for the table `oauth_access_token` */
-
-/*Table structure for table `oauth_approvals` */
-
-DROP TABLE IF EXISTS `oauth_approvals`;
-
-CREATE TABLE `oauth_approvals` (
-  `userId` varchar(256) DEFAULT NULL,
-  `clientId` varchar(256) DEFAULT NULL,
-  `scope` varchar(256) DEFAULT NULL,
-  `status` varchar(10) DEFAULT NULL,
-  `expiresAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `lastModifiedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-);
-
-/*Data for the table `oauth_approvals` */
-
-/*Table structure for table `oauth_client_details` */
-
-DROP TABLE IF EXISTS `oauth_client_details`;
-
-CREATE TABLE `oauth_client_details` (
-  `client_id` varchar(48) NOT NULL,
-  `resource_ids` varchar(256) DEFAULT NULL,
-  `client_secret` varchar(256) DEFAULT NULL,
-  `scope` varchar(256) DEFAULT NULL,
-  `authorized_grant_types` varchar(256) DEFAULT NULL,
-  `web_server_redirect_uri` varchar(256) DEFAULT NULL,
-  `authorities` varchar(256) DEFAULT NULL,
-  `access_token_validity` int(11) DEFAULT NULL,
-  `refresh_token_validity` int(11) DEFAULT NULL,
-  `additional_information` varchar(4096) DEFAULT NULL,
-  `autoapprove` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`client_id`)
-);
-
-/*Data for the table `oauth_client_details` */
+-- -----------------------------------------------------
+-- Table `qcadmin_auth`.`oauth_access_token`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `qcadmin_auth`.`oauth_access_token` (
+  `token_id` VARCHAR(256) NULL DEFAULT NULL,
+  `token` BLOB NULL DEFAULT NULL,
+  `authentication_id` VARCHAR(128) NOT NULL,
+  `user_name` VARCHAR(256) NULL DEFAULT NULL,
+  `client_id` VARCHAR(256) NULL DEFAULT NULL,
+  `authentication` BLOB NULL DEFAULT NULL,
+  `refresh_token` VARCHAR(256) NULL DEFAULT NULL,
+  PRIMARY KEY (`authentication_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
 
-/*Table structure for table `oauth_client_token` */
+-- -----------------------------------------------------
+-- Table `qcadmin_auth`.`oauth_approvals`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `qcadmin_auth`.`oauth_approvals` (
+  `userId` VARCHAR(256) NULL DEFAULT NULL,
+  `clientId` VARCHAR(256) NULL DEFAULT NULL,
+  `scope` VARCHAR(256) NULL DEFAULT NULL,
+  `status` VARCHAR(10) NULL DEFAULT NULL,
+  `expiresAt` DATETIME NULL DEFAULT NULL,
+  `lastModifiedAt` DATETIME NULL DEFAULT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-DROP TABLE IF EXISTS `oauth_client_token`;
 
-CREATE TABLE `oauth_client_token` (
-  `token_id` varchar(256) DEFAULT NULL,
-  `token` blob,
-  `authentication_id` varchar(48) NOT NULL,
-  `user_name` varchar(256) DEFAULT NULL,
-  `client_id` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`authentication_id`)
-);
+-- -----------------------------------------------------
+-- Table `qcadmin_auth`.`oauth_client_details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `qcadmin_auth`.`oauth_client_details` (
+  `client_id` VARCHAR(128) NOT NULL,
+  `resource_ids` VARCHAR(256) NULL DEFAULT NULL,
+  `client_secret` VARCHAR(256) NULL DEFAULT NULL,
+  `scope` VARCHAR(256) NULL DEFAULT NULL,
+  `authorized_grant_types` VARCHAR(256) NULL DEFAULT NULL,
+  `web_server_redirect_uri` VARCHAR(256) NULL DEFAULT NULL,
+  `authorities` VARCHAR(256) NULL DEFAULT NULL,
+  `access_token_validity` INT(11) NULL DEFAULT NULL,
+  `refresh_token_validity` INT(11) NULL DEFAULT NULL,
+  `additional_information` VARCHAR(4096) NULL DEFAULT NULL,
+  `autoapprove` VARCHAR(256) NULL DEFAULT NULL,
+  PRIMARY KEY (`client_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-/*Data for the table `oauth_client_token` */
 
-/*Table structure for table `oauth_code` */
+-- -----------------------------------------------------
+-- Table `qcadmin_auth`.`oauth_client_token`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `qcadmin_auth`.`oauth_client_token` (
+  `token_id` VARCHAR(256) NULL DEFAULT NULL,
+  `token` BLOB NULL DEFAULT NULL,
+  `authentication_id` VARCHAR(128) NOT NULL,
+  `user_name` VARCHAR(256) NULL DEFAULT NULL,
+  `client_id` VARCHAR(256) NULL DEFAULT NULL,
+  PRIMARY KEY (`authentication_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-DROP TABLE IF EXISTS `oauth_code`;
 
-CREATE TABLE `oauth_code` (
-  `code` varchar(256) DEFAULT NULL,
-  `authentication` blob
-);
+-- -----------------------------------------------------
+-- Table `qcadmin_auth`.`oauth_code`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `qcadmin_auth`.`oauth_code` (
+  `code` VARCHAR(256) NULL DEFAULT NULL,
+  `authentication` BLOB NULL DEFAULT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-/*Data for the table `oauth_code` */
 
-/*Table structure for table `oauth_refresh_token` */
-
-DROP TABLE IF EXISTS `oauth_refresh_token`;
-
-CREATE TABLE `oauth_refresh_token` (
-  `token_id` varchar(256) DEFAULT NULL,
-  `token` blob,
-  `authentication` blob
-);
+-- -----------------------------------------------------
+-- Table `qcadmin_auth`.`oauth_refresh_token`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `qcadmin_auth`.`oauth_refresh_token` (
+  `token_id` VARCHAR(256) NULL DEFAULT NULL,
+  `token` BLOB NULL DEFAULT NULL,
+  `authentication` BLOB NULL DEFAULT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
