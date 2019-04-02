@@ -1,5 +1,7 @@
 server:
   port: 9002
+  servlet:
+    context-path: /auth
 spring:
   application:
     name: qcadmin_auth
@@ -45,12 +47,10 @@ encrypt:
     secret: qcadmin
     alias: qckey
     password: qcadmin
-
-
-#auth:
-#  tokenValiditySeconds: 1200  #token存储到redis的过期时间
-#  clientId: qcadminWebApp
-#  clientSecret: qcadminWebApp
+  auth:
+    tokenValiditySeconds: 1200  #token存储到redis的过期时间
+    clientId: qcadmin
+    clientSecret: qcadmin
 
 
 

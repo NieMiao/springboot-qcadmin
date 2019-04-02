@@ -1,6 +1,7 @@
 package qcadmin.auth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.bootstrap.encrypt.KeyProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -62,7 +63,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     //客户端配置(从数据库读取客户端信息)
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc(this.dataSource).clients(this.clientDetails());
+//    数据库方式读取客户端配置
+       clients.jdbc(this.dataSource).clients(this.clientDetails());
+//        super.configure(clients);
+//        clients.inMemory()                          // 使用内存存储客户端信息
+//                .withClient("qcadmin")       // client_id
+//                .secret(new BCryptPasswordEncoder().encode("qcadmin"))                   // client_secret
+//                .authorizedGrantTypes("authorization_code","password")     // 该client允许的授权类型
+//                .accessTokenValiditySeconds(3600)               // Token 的有效期
+//                .scopes("app")                    // 允许的授权范围
+//                .autoApprove(true);                  //登录后绕过批准询问(/oauth/confirm_access)
     }
 
     @Bean
@@ -85,23 +95,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     //授权服务器端点配置
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        /*Collection<TokenEnhancer> tokenEnhancers = applicationContext.getBeansOfType(TokenEnhancer.class).values();
-        TokenEnhancerChain tokenEnhancerChain=new TokenEnhancerChain();
-        tokenEnhancerChain.setTokenEnhancers(new ArrayList<>(tokenEnhancers));
-
-        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setReuseRefreshToken(true);
-        defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setTokenStore(tokenStore);
-        defaultTokenServices.setAccessTokenValiditySeconds(1111111);
-        defaultTokenServices.setRefreshTokenValiditySeconds(1111111);
-        defaultTokenServices.setTokenEnhancer(tokenEnhancerChain);
-
-        endpoints
-                .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService)
-                        //.tokenStore(tokenStore);
-                .tokenServices(defaultTokenServices);*/
         endpoints.accessTokenConverter(jwtAccessTokenConverter)
                 .authenticationManager(authenticationManager)//认证管理器
                 .tokenStore(tokenStore)//令牌存储
@@ -116,6 +109,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
     }
-
 
 }

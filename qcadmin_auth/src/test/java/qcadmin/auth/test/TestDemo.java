@@ -64,7 +64,7 @@ public class TestDemo {
         //公钥
         String publicKey  = "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0B/FahviVen/2ar0GqWnGos5ufxXwrm2C7M3K536l5eDimYXsaCitBsKWyS0z7iRUTp9g/NF/RlRXD+U8kRdKU6hyOxBk33ZcdBhZKQExD7KHKNAEyY6c19RldSC97pXss9Y6jKGiakDgt9UCjuU0WO9u7S8wOY8LhcZC9dpOZAregs1OhgHRA8RHV23Jdjtrf9540yxI0QYkFO7MhuJ/fwEp0f8qnZ2jeEvE/62CBgRVaZFSdndBUH30EC8mN2h4qhr/1d+Sw3nQVIgUd/qE8s/vaj32GZRrg9gsl71iTNrA1UUD4k6FveLVFOmyesVhxc8AhYvgpowm2VgCpjbqQIDAQAB-----END PUBLIC KEY-----";
         //jwt令牌
-        String token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibmllIn0.xaqgx_j9ACMHYvKwbbC5QxOfgW2-h1z_6JrNpQYksm2xxUUZ5zE0F9s-_NobcPNHwxZ-NJoB2xJhTc0PM-12RyFZsml_G9Dgnm1oIIoPTY6UjeRkza9sBgTm2Bpg67nInc0ieNTrZJasBQMO3QfNGhP9OZmMjGjFcbsKwf30Xk3PXmN9e250rhxCh4Nt9lvI7D090-MdwuH6eIMDDjiDoPKrDrp2-aCXBoPHnuIxLl92q2OiLige4QkQVenZqwdRweAg9YYKD4qTlz1r-raz9yowzaoBKuvkpTrykUNdZTBULe43Caqllb9eJc0FvD3cwE1lAzCO8vTcKQhco3rWCw";
+        String token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdkMDYyODg5LTY3YjAtNDY4NS1iZjNlLTMzZDJkNjVjMTA2ZiIsImV4cCI6MTU1NDIzNjk1OSwidXNlcl9uYW1lIjoicWNhZG1pbiIsImp0aSI6ImEwYThiYWUwLTUxYTAtNDU0Ni05ZTIzLTYyNjgyMzU1NDNjMiIsImNsaWVudF9pZCI6InFjYWRtaW4iLCJzY29wZSI6WyJhcHAiXX0.msntvLyPBZ8xQmvJ3IFKh7lAjpM9vEsD_7yflPl6rjoWXKCJBxmhGRENZTLfxLcmmTECR-viMVJNJR7tsnW75IjUhNjiCGVUlBe27TT4vnLj7HwNfFPWZD3J1HqI6VFumxjAUv0Zs2CkzpHvpnsfHIYrHsbEb_iMDnszxW9YJZo3EroJNJ39HvZQrKmr9YfbpknSEm1hy0un0QKE47CU_UW5oDYU9bZdh_KHVNTI1yIwREJn1cpW79_zkcYQn1P_qcp97uW7P0HGcHnnBF6aajsD61MJD5o_2dvbzDn01k98kFvyQQv10mZzdMGnyqukTEWg1iTBpEXrHOZsYoW9Xg";
 
         Jwt jwt = JwtHelper.decodeAndVerify(token, new RsaVerifier(publicKey));
         //获取jwt令牌中自定义的内容

@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import qcadmin.auth.model.UserExt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -46,22 +48,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (StringUtils.isEmpty(username)) {
             return null;
         }
-        //根据账号查询用户信息
-        qcadmin.auth.entity.User user = userService.findByUsername(username);
-        if(user == null){
-            //返回空给spring security表示用户不存在
-            return null;
-        }
-//        XcUserExt userext = new XcUserExt();
-//        userext.setUsername("itcast");
-//        userext.setPassword(new BCryptPasswordEncoder().encode("123"));
         UserExt userExt = new UserExt();
-        userExt.setUsername(user.getUsername());
-        userExt.setPassword(user.getPassword());
+        userExt.setUsername("itcast");
+        userExt.setPassword(new BCryptPasswordEncoder().encode("123"));
         userExt.setPermissions(new ArrayList<Menu>());//权限暂时用静态的
 
         //取出正确密码（hash值）
-        String password = user.getPassword();
+        String password = userExt.getPassword();
         //这里暂时使用静态密码
 //       String password ="123";
         //用户权限，这里暂时使用静态数据，最终会从数据库读取
@@ -69,17 +62,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         List<Menu> permissions = userExt.getPermissions();
         List<String> user_permission = new ArrayList<>();
         permissions.forEach(item-> user_permission.add(item.getCode()));
-//        user_permission.add("course_get_baseinfo");
-//        user_permission.add("course_find_pic");
+
         String user_permission_string  = StringUtils.join(user_permission.toArray(), ",");
         UserJwt userDetails = new UserJwt(username,
                 password,
                 AuthorityUtils.commaSeparatedStringToAuthorityList(user_permission_string));
-        userDetails.setId(userExt.getId());
-       /* UserDetails userDetails = new org.springframework.security.core.userdetails.User(username,
-                password,
-                AuthorityUtils.commaSeparatedStringToAuthorityList(""));*/
-//                AuthorityUtils.createAuthorityList("course_get_baseinfo","course_get_list"));
+
+        userDetails.setId(UUID.randomUUID().toString());
+
         return userDetails;
     }
 }
