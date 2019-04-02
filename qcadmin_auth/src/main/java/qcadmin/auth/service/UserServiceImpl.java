@@ -2,9 +2,14 @@ package qcadmin.auth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import qcadmin.auth.entity.Menu;
 import qcadmin.auth.entity.User;
-import qcadmin.auth.model.UserExt;
+import qcadmin.auth.repository.JUserRepository;
 import qcadmin.auth.repository.UserRepository;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @program: qcadmin_server
@@ -18,9 +23,18 @@ public class UserServiceImpl {
     @Autowired
     private UserRepository userRepository;
 
-    public User findByUsername(String username){
+    @Autowired
+    private JUserRepository jUserRepository;
 
+    public User findByUsername(String username){
         return userRepository.findByUsername(username);
+    }
+
+    public List<Menu> findMenuByUsername(String username){
+        Map<String,String> map = new HashMap<>();
+        map.put("username",username);
+        return jUserRepository.menuList(map);
+
     }
 
 }

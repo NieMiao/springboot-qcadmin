@@ -18,7 +18,7 @@ public class ClientTest {
 
     @Test
     public static void main(String[] args) {
-        String string = new String("qcadmin");
+        String string = new String("123456");
 
         String encode = new BCryptPasswordEncoder().encode(string);
 

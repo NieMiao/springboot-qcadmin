@@ -20,6 +20,7 @@ import qcadmin.auth.model.UserExt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -48,28 +49,24 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (StringUtils.isEmpty(username)) {
             return null;
         }
-        UserExt userExt = new UserExt();
-        userExt.setUsername("itcast");
-        userExt.setPassword(new BCryptPasswordEncoder().encode("123"));
-        userExt.setPermissions(new ArrayList<Menu>());//权限暂时用静态的
-
+        qcadmin.auth.entity.User user = userService.findByUsername(username);
+        UserExt userExt  = new UserExt();
+        userExt.setId(user.getId());
+        userExt.setUsername(user.getUsername());
+        userExt.setPassword(user.getPassword());
         //取出正确密码（hash值）
         String password = userExt.getPassword();
-        //这里暂时使用静态密码
-//       String password ="123";
-        //用户权限，这里暂时使用静态数据，最终会从数据库读取
         //从数据库获取权限
-        List<Menu> permissions = userExt.getPermissions();
+        List<Menu> permissions = userService.findMenuByUsername(username);
+        userExt.setPermissions(permissions);
         List<String> user_permission = new ArrayList<>();
         permissions.forEach(item-> user_permission.add(item.getCode()));
-
         String user_permission_string  = StringUtils.join(user_permission.toArray(), ",");
         UserJwt userDetails = new UserJwt(username,
                 password,
                 AuthorityUtils.commaSeparatedStringToAuthorityList(user_permission_string));
-
-        userDetails.setId(UUID.randomUUID().toString());
-
+        userDetails.setId(userExt.getId());
+        userDetails.setName(userExt.getUsername());
         return userDetails;
     }
 }
