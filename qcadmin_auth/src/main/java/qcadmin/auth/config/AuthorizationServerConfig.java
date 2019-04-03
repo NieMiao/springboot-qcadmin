@@ -26,6 +26,11 @@ import javax.sql.DataSource;
 import java.security.KeyPair;
 
 
+/** 
+* @Description: 授权服务配置
+* @Author: NieMiao 
+* @Date: 2019/4/3 
+*/ 
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -45,6 +50,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Autowired
     private UserDetailsService userDetailsService;
+
     //读取密钥的配置
     @Bean("keyProp")
     public KeyProperties keyProperties(){
@@ -65,14 +71,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 //    数据库方式读取客户端配置
        clients.jdbc(this.dataSource).clients(this.clientDetails());
-//        super.configure(clients);
-//        clients.inMemory()                          // 使用内存存储客户端信息
-//                .withClient("qcadmin")       // client_id
-//                .secret(new BCryptPasswordEncoder().encode("qcadmin"))                   // client_secret
-//                .authorizedGrantTypes("authorization_code","password")     // 该client允许的授权类型
-//                .accessTokenValiditySeconds(3600)               // Token 的有效期
-//                .scopes("app")                    // 允许的授权范围
-//                .autoApprove(true);                  //登录后绕过批准询问(/oauth/confirm_access)
     }
 
     @Bean
