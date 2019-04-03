@@ -41,7 +41,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if(authentication==null){
             ClientDetails clientDetails = clientDetailsService.loadClientByClientId(username);
             if(clientDetails!=null){
-                //密码
                 String clientSecret = clientDetails.getClientSecret();
                 return new User(username,clientSecret,AuthorityUtils.commaSeparatedStringToAuthorityList(""));
             }
