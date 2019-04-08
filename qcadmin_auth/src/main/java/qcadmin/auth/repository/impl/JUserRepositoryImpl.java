@@ -25,7 +25,7 @@ public class JUserRepositoryImpl implements JUserRepository {
     @Override
     public List<Menu> menuList(Map<String, String> map) {
         StringBuffer sb = new StringBuffer();
-        sb.append("select * from auth_menu where id in");
+        sb.append("select * from auth_menu where id in ");
         sb.append(" (select menu_id from auth_role_menu where role_id in ");
         sb.append(" (select id from auth_role where id in ");
         sb.append(" (select role_id from auth_user_role where user_id = ");

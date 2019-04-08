@@ -3,8 +3,6 @@ package qcadmin.common.utils;
 import qcadmin.common.VO.ResultVO;
 import qcadmin.common.enums.StateCode;
 
-import java.util.List;
-
 /**
  * @program: springboot-qcadmin
  * @description: http请求对象封装对象
