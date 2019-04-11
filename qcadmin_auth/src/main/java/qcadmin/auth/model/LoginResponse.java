@@ -1,5 +1,6 @@
 package qcadmin.auth.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -9,6 +10,7 @@ import lombok.Data;
  * @create: 2019-04-08 17:39
  **/
 @Data
+@AllArgsConstructor
 public class LoginResponse {
     private String username;
     private String token;

@@ -1,7 +1,6 @@
 package qcadmin.common.exception;
 
 import lombok.Data;
-import qcadmin.common.enums.ResultEnums;
 
 /**
  * @program: springboot-qcadmin
@@ -12,14 +11,10 @@ import qcadmin.common.enums.ResultEnums;
 @Data
 public class QCException extends RuntimeException{
 
-    private String code;
+    private Integer code;
 
-    public  QCException (ResultEnums resultEnums){
-        super(resultEnums.getMessage());
-        this.code = resultEnums.getCode();
-    }
 
-    public QCException (String message,String code){
+    public QCException (String message,Integer code){
         super(message);
         this.code = code;
     }

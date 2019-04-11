@@ -1,4 +1,4 @@
-package qcadmin.common.utils;
+package qcadmin.common.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

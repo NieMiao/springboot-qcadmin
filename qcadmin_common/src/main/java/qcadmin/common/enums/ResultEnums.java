@@ -11,7 +11,6 @@ public enum  ResultEnums {
     ;
 
     private String code;
-
     private String message;
 
     ResultEnums(String code, String message) {

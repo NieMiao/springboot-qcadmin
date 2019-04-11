@@ -28,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     ClientDetailsService clientDetailsService;
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -18,7 +18,7 @@ import java.util.Map;
  * @create: 2019-03-29 11:10
  **/
 @Service
-public class UserServiceImpl {
+public class UserService {
 
     @Autowired
     private UserRepository userRepository;

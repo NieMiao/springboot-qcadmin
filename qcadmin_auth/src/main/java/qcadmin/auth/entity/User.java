@@ -27,9 +27,6 @@ public class User extends BaseEntity {
     @Column(name = "password")
     private String password; 	//密码
 
-    @Column(name = "client_id")
-    private String clientId;		//客户端id
-
     @Column(name = "last_login")
     private Date lastLogin;	//最后登录时间
 
