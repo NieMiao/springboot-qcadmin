@@ -47,12 +47,10 @@ encrypt:
     secret: qcadmin
     alias: qckey
     password: qcadmin
-  auth:
-    tokenValiditySeconds: 1200  #token存储到redis的过期时间
-    clientId: qcadmin
-    clientSecret: qcadmin
-
-
+auth:
+  tokenValiditySeconds: 1200  #token存储到redis的过期时间
+  clientId: qcadmin
+  clientSecret: qcadmin
 
 #  cookieDomain: java.itcast.cn
 #  cookieMaxAge: -1

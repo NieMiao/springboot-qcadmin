@@ -23,7 +23,7 @@ import qcadmin.common.utils.ResultUtils;
  **/
 @RestController
 @Api(description = "/认证服务接口")
-@RequestMapping("/v1/auth")
+@RequestMapping("/")
 public class AuthController {
 
     private AuthService authService;
@@ -33,7 +33,7 @@ public class AuthController {
     @Value("${auth.clientSecret}")
     String clientSecret;
 
-    @PostMapping("/login")
+    @PostMapping("/userlogin")
     public ResultVO login(@RequestBody LoginRequest loginRequest){
         //对用户名和密码进行非空判断
         if(StringUtils.isEmpty(loginRequest.getUsername())){
