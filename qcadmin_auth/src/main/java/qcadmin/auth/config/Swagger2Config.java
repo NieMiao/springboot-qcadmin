@@ -38,7 +38,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("qcadmin-auth 认证服务api")
                 .description("qcadmin-auth 认证服务api")
-                .termsOfServiceUrl("http://127.0.0.1:8080/")
+                //.termsOfServiceUrl("http://127.0.0.1:8080/")
                 .contact(new Contact("NieMiao",null,"905336559@qq.com"))
                 .version("1.0.0")
                 .build();

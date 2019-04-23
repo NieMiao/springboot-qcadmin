@@ -18,8 +18,9 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-@ComponentScan(basePackages={"qcadmin.auth.api"})
+@ComponentScan(basePackages={"qcadmin.auth"})
 public class AuthApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(AuthApplication.class,args);
     }

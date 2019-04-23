@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -29,6 +30,7 @@ import java.util.concurrent.TimeUnit;
  * @create: 2019-04-11 15:30
  **/
 @Service
+@Transactional
 public class AuthService {
 
     @Value("${auth.tokenValiditySeconds}")
