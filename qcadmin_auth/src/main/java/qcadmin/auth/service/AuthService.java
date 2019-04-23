@@ -82,7 +82,7 @@ public class AuthService {
 
         //获取客户端id，secret 经过base64编码后的字符串，用于客户端验证
         String string = clientId+":"+clientSecret;
-        byte[] bytes = Base64Utils.decodeFromString(string);
+        byte[] bytes = Base64Utils.encode(string.getBytes());
         String httpBasic = "Basic "+new String(bytes);
         headers.add("Authorization",httpBasic);
 

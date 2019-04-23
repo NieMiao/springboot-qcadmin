@@ -40,7 +40,6 @@ public class AuthController {
         if (StringUtils.isEmpty(loginRequest.getPassword())){
             throw new AuthException(AuthEnums.PASSWORD_EMPTY_ERROR);
         }
-
         String username = loginRequest.getUsername();
         String password = loginRequest.getPassword();
         //申请token
