@@ -77,7 +77,7 @@ public class AuthService {
     private AuthToken applyToken(String clientId, String clientSecret, String username, String password) {
 
         //服务请求地址，先使用固定写法，后面改成从eureka获取ip
-        String url = "http://localhost:9001/auth/oauth/token";
+        String url = "http://localhost:9002/auth/oauth/token";
         LinkedMultiValueMap<String,String> headers = new LinkedMultiValueMap<>();
 
         //获取客户端id，secret 经过base64编码后的字符串，用于客户端验证

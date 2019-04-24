@@ -4,13 +4,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.OAuthBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * @program: springboot-com.qcadmin
@@ -43,4 +47,27 @@ public class Swagger2Config {
                 .version("1.0.0")
                 .build();
     }
+
+    /*private SecurityScheme securityScheme() {
+        GrantType grantType = new ResourceOwnerPasswordCredentialsGrant("http://localhost:9002/" + "oauth/token");
+
+        return new OAuthBuilder()
+                .name("qcadmin_auth")
+                .grantTypes(Collections.singletonList(grantType))
+                .scopes(Arrays.asList(scopes()))
+                .build();
+    }
+
+    private SecurityContext securityContext() {
+        return SecurityContext.builder()
+                .securityReferences(Collections.singletonList(new SecurityReference("qcadmin_auth", scopes())))
+                .forPaths(PathSelectors.any())
+                .build();
+    }
+
+    private AuthorizationScope[] scopes() {
+        return new AuthorizationScope[]{
+                new AuthorizationScope("all", "All scope is trusted!")
+        };
+    }*/
 }
