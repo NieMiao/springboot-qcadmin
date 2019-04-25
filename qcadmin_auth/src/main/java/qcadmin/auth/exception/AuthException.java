@@ -22,4 +22,8 @@ public class AuthException extends RuntimeException {
         super(authEnums.getMessage());
         this.code = authEnums.getCode();
     }
+
+    public Integer getCode() {
+        return code;
+    }
 }

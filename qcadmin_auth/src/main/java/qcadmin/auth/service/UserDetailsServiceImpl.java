@@ -46,6 +46,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             return null;
         }
         qcadmin.auth.entity.User user = userService.findByUsername(username);
+        if (user==null){
+            return null;
+        }
         UserExt userExt  = new UserExt();
         userExt.setId(user.getId());
         userExt.setUsername(user.getUsername());

@@ -36,6 +36,9 @@ public class AuthService {
     @Value("${auth.tokenValiditySeconds}")
     int tokenValiditySeconds;
 
+    @Value("${auth.url}")
+    String url;
+
     @Autowired
     StringRedisTemplate redisTemplate;
 
@@ -77,7 +80,7 @@ public class AuthService {
     private AuthToken applyToken(String clientId, String clientSecret, String username, String password) {
 
         //服务请求地址，先使用固定写法，后面改成从eureka获取ip
-        String url = "http://localhost:9002/auth/oauth/token";
+        //String url = "http://localhost:9002/auth/oauth/token";
         LinkedMultiValueMap<String,String> headers = new LinkedMultiValueMap<>();
 
         //获取客户端id，secret 经过base64编码后的字符串，用于客户端验证
@@ -122,7 +125,7 @@ public class AuthService {
             }
             return null;
         }
-        AuthToken authToken = new AuthToken();
+        AuthToken authToken = new AuthToken( );
         authToken.setAccess_token((String) entityBody.get("jti"));//用户身份令牌
         authToken.setRefresh_token((String) entityBody.get("refresh_token"));//刷新令牌
         authToken.setJwt_token((String) entityBody.get("access_token"));//jwt令牌
