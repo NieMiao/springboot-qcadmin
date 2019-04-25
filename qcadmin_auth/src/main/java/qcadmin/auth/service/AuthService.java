@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import qcadmin.auth.enums.AuthEnums;
 import qcadmin.auth.exception.AuthException;
 import qcadmin.auth.model.AuthToken;
+import qcadmin.common.enums.ResultEnums;
 
 import java.io.IOException;
 import java.util.Map;
@@ -145,5 +146,22 @@ public class AuthService {
         redisTemplate.boundValueOps(key).set(token,tokenValiditySeconds, TimeUnit.SECONDS);
         Long expire = redisTemplate.getExpire(key, TimeUnit.SECONDS);
         return expire>0;
+    }
+
+    /**
+    * @Description: 删除redis中的token
+    * @Param: [uid] cookie中保存的access_token
+    * @return: boolean
+    * @Author: NieMiao
+    * @Date: 2019/4/25
+    */
+    public boolean delToken(String uid) {
+        String key = "user_token:"+uid;
+        try {
+            redisTemplate.delete(key);
+        }catch (Exception e){
+            throw new AuthException(AuthEnums.TOKEN_DEL_FAIL);
+        }
+        return true;
     }
 }

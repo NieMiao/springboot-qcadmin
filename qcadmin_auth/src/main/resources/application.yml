@@ -52,9 +52,8 @@ auth:
   clientId: qcadmin
   clientSecret: qcadmin
   url: http://localhost:9002/auth/oauth/token
-
-#  cookieDomain: java.itcast.cn
-#  cookieMaxAge: -1
+  cookieDomain: www.qcadmin.cn
+  cookieMaxAge: -1
 
 
 #encrypt:
